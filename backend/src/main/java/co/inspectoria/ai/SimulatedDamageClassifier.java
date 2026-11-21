@@ -2,11 +2,13 @@ package co.inspectoria.ai;
 
 import co.inspectoria.domain.DamageType;
 import co.inspectoria.domain.Severity;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import java.security.MessageDigest;
 
 /** Simulación determinista: la misma imagen siempre da el mismo resultado (útil para demos y pruebas). */
 @Component
+@ConditionalOnProperty(name = "inspectoria.classifier", havingValue = "simulated", matchIfMissing = true)
 public class SimulatedDamageClassifier implements DamageClassifier {
     @Override
     public ClassificationResult classify(byte[] image, String contentType) {

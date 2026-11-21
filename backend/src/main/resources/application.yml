@@ -12,6 +12,9 @@ spring:
 inspectoria:
   storage-dir: ./uploads
   cors-origin: http://localhost:5173
+  classifier: ${CLASSIFIER:simulated}   # simulated | remote (YOLOv8, ver ai-service/README.md)
+  ai:
+    url: ${AI_URL:http://localhost:8000}
   seed-demo: true            # crea 8 reportes de ejemplo si la tabla está vacía (desactivar en producción)
   jwt:
     secret: ${JWT_SECRET:cambia-este-secreto-de-desarrollo-minimo-32-bytes}

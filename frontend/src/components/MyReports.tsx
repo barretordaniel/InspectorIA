@@ -20,11 +20,10 @@ const TYPES: { value: string; label: string }[] = [
   { value: 'Andén roto', label: 'Andén roto' },
 ]
 
-const MINE = getMine()
-
 export default function MyReports({ navigate }: NavProps) {
   const [filterSev, setFilterSev] = useState('todas')
   const [filterType, setFilterType] = useState('todos')
+  const MINE = getMine()
   const { reports: myReports, loading } = useReports({ ids: MINE })
 
   const filtered = myReports.filter(r => {
