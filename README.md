@@ -4,12 +4,20 @@
 - `backend/` — Spring Boot 3 (Java 17), arquitectura en capas, PostgreSQL + Flyway
 - `docker-compose.yml` — PostgreSQL local
 
-## Correr
+## Correr (un solo comando)
 
 ```bash
-docker compose up -d                 # base de datos
-cd backend && mvn spring-boot:run    # API en :8080
-cd frontend && npm install && npm run dev   # web en :5173 (proxy /api -> :8080)
+docker compose up --build
+```
+
+Abre http://localhost:8080 — la web y la API salen del mismo servicio.
+
+### Modo desarrollo (recarga en caliente)
+
+```bash
+docker compose up -d db
+cd backend && mvn spring-boot:run          # API en :8080
+cd frontend && npm install && npm run dev  # web en :5173 (proxy /api -> :8080)
 ```
 
 ## API
